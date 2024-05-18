@@ -88,7 +88,7 @@ class SheetBody extends StatelessWidget {
               centerTitle: false,
             ),
             SliverGrid.builder(
-                gridDelegate: CustomGridDelegate(dimension: 240),
+                gridDelegate: CustomGridDelegate(),
                 itemCount: marker.markerList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return GridTile(

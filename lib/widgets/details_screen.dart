@@ -1,3 +1,4 @@
+import 'package:culture_explorer_ar/widgets/custom_grid.dart';
 import 'package:culture_explorer_ar/widgets/custom_marker.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,9 +18,42 @@ class DetailsScreen extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            ElevatedButton(
-                onPressed: () => launchUrl(url),
-                child: const Text("Direction")),
+            Row(
+              children: <Widget>[
+                ElevatedButton.icon(
+                    onPressed: () => launchUrl(url),
+                    icon: const Icon(Icons.directions),
+                    label: const Text("Direction")),
+                ElevatedButton.icon(
+                    onPressed: () => {}, //TODO: Navigate to 360 photo
+                    icon: const Icon(Icons.panorama_photosphere),
+                    label: const Text("360 Photos")),
+              ],
+            ),
+            Expanded(
+              child: GridView.builder(
+                  gridDelegate: CustomGridDelegate(),
+                  //TODO: Create a list of model and get its length here
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      clipBehavior: Clip.hardEdge,
+                      child: InkWell(
+                        onTap: () => {}, //TODO: Navigate to AR model
+                        child: Column(
+                          children: [
+                            //TODO: Get model's name from list,
+                            Text("Model $index"),
+                            //TODO: Model's image hay gì đó để nhận biết model
+                            const Image(
+                                image: NetworkImage(
+                                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'))
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+            ),
           ],
         ));
   }
