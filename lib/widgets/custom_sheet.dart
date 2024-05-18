@@ -35,6 +35,7 @@ class _CustomSheetState extends State<CustomSheet> {
       initialChildSize: _initialChildSize,
       maxChildSize: _maxChildSize,
       minChildSize: _minChildSize,
+      expand: false,
       snap: true,
       snapSizes: _snapSizes,
       controller: _controller,
