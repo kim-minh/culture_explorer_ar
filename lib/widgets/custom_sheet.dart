@@ -3,16 +3,7 @@ import 'package:culture_explorer_ar/widgets/custom_marker.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-class SheetNotifier with ChangeNotifier {
-  String _title = "Nearby Places";
-  String get title => _title;
-
-  void update(String? title) {
-    _title = title ?? 'Not provided';
-    notifyListeners();
-  }
-}
+import 'custom_card.dart';
 
 class CustomSheet extends StatefulWidget {
   const CustomSheet({super.key});
@@ -34,6 +25,7 @@ class _CustomSheetState extends State<CustomSheet> {
       initialChildSize: _initialChildSize,
       maxChildSize: _maxChildSize,
       minChildSize: _minChildSize,
+      expand: false,
       snap: true,
       snapSizes: _snapSizes,
       controller: _controller,
@@ -59,8 +51,8 @@ class SheetBody extends StatelessWidget {
           topRight: Radius.circular(25),
         ),
       ),
-      child: Consumer2<SheetNotifier, MarkerNotifier>(
-        builder: (context, sheet, marker, child) => CustomScrollView(
+      child: Consumer<MarkerNotifier>(
+        builder: (context, marker, child) => CustomScrollView(
           controller: scrollController,
           scrollBehavior: const ScrollBehavior().copyWith(dragDevices: {
             PointerDeviceKind.touch,
@@ -80,39 +72,25 @@ class SheetBody extends StatelessWidget {
                 ),
               ),
             ),
-            SliverAppBar(
-              title: Text(sheet.title),
+            const SliverAppBar(
+              title: Text("Nearby Places"),
               primary: false,
               pinned: true,
               centerTitle: false,
             ),
             SliverGrid.builder(
-                gridDelegate: CustomGridDelegate(dimension: 240),
-                itemCount: marker.markerList.length,
+                gridDelegate: CustomGridDelegate(),
+                itemCount: marker.isSelected ? 1 : marker.markerList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  // final math.Random random = math.Random(index);
+                  if (marker.isSelected) {
+                    index = marker.selectedMarkerIndex;
+                  }
                   return GridTile(
                     header: GridTileBar(
-                      title: Text(
-                          marker.markerList[index].name ??
-                              marker.markerList[index].nameEn ??
-                              "Not provided",
+                      title: Text(marker.markerList[index].name,
                           style: const TextStyle(color: Colors.black)),
                     ),
-                    child: Container(
-                      margin: const EdgeInsets.all(12.0),
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        gradient: const RadialGradient(
-                          colors: <Color>[Color(0x0F88EEFF), Color(0x2F0099BB)],
-                        ),
-                      ),
-                      child: FlutterLogo(
-                        style: FlutterLogoStyle.values[1],
-                      ),
-                    ),
+                    child: CustomCard(marker: marker.markerList[index]),
                   );
                 })
           ],

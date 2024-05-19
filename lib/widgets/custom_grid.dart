@@ -1,13 +1,9 @@
 import 'package:flutter/rendering.dart';
 
 class CustomGridDelegate extends SliverGridDelegate {
-  CustomGridDelegate({required this.dimension});
-
   // This is the desired height of each row (and width of each square).
   // When there is not enough room, we shrink this to the width of the scroll view.
-  final double dimension;
-
-  // The layout is two rows of squares, then one very wide cell, repeat.
+  final double dimension = 200;
 
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {

@@ -1,25 +1,22 @@
 import 'package:culture_explorer_ar/widgets/custom_marker.dart';
-import 'package:culture_explorer_ar/widgets/custom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomIconButton extends StatefulWidget {
-  final String? _name;
-  final String? _nameEn;
-  final String type;
+  final int _index;
+  final String _type;
   final Icon _icon;
   final Icon _selectedIcon;
 
-  const CustomIconButton(
-      {super.key, required this.type, String? name, String? nameEn})
-      : _icon = type == 'museum'
+  const CustomIconButton({super.key, required int index, required String type})
+      : _index = index,
+        _type = type,
+        _icon = type == 'museum'
             ? const Icon(Icons.museum_outlined)
             : const Icon(Icons.palette_outlined),
         _selectedIcon = type == 'museum'
             ? const Icon(Icons.museum)
-            : const Icon(Icons.palette),
-        _name = name,
-        _nameEn = nameEn;
+            : const Icon(Icons.palette);
 
   @override
   State<CustomIconButton> createState() => CustomIconButtonState();
@@ -38,27 +35,22 @@ class CustomIconButtonState extends State<CustomIconButton> {
       builder: (context, marker, child) => IconButton.filled(
         isSelected: _isSelected,
         onPressed: () {
-          final sheet = context.read<SheetNotifier>();
-
           if (!marker.isSelected) {
             setSelected();
-            sheet.update(widget._name ?? widget._nameEn);
             marker.setSelection();
-            marker.setSelectedMarker(this);
+            marker.setSelectedMarker(this, widget._index);
           } else if (_isSelected) {
             setSelected();
-            sheet.update("Nearby Places");
             marker.setSelection();
           } else {
             setSelected();
-            sheet.update(widget._name ?? widget._nameEn);
             marker.resetSelected(marker.selectedMarker!);
-            marker.setSelectedMarker(this);
+            marker.setSelectedMarker(this, widget._index);
           }
         },
         icon: widget._icon,
         selectedIcon: widget._selectedIcon,
-        tooltip: '${widget.type[0].toUpperCase()}${widget.type.substring(1)}',
+        tooltip: '${widget._type[0].toUpperCase()}${widget._type.substring(1)}',
       ),
     );
   }
