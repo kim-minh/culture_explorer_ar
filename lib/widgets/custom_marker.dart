@@ -62,5 +62,5 @@ class CustomMarker extends Marker {
   final String type;
 
   CustomMarker({required super.point, required this.index, required this.name, required this.type})
-      : super(rotate: true, child: CustomIconButton(index: index, name: name, type: type));
+      : super(rotate: true, child: CustomIconButton(index: index, type: type));
 }

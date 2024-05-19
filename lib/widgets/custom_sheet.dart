@@ -5,16 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'custom_card.dart';
 
-class SheetNotifier with ChangeNotifier {
-  String _title = "Nearby Places";
-  String get title => _title;
-
-  void update(String title) {
-    _title = title;
-    notifyListeners();
-  }
-}
-
 class CustomSheet extends StatefulWidget {
   const CustomSheet({super.key});
 
@@ -61,8 +51,8 @@ class SheetBody extends StatelessWidget {
           topRight: Radius.circular(25),
         ),
       ),
-      child: Consumer2<SheetNotifier, MarkerNotifier>(
-        builder: (context, sheet, marker, child) => CustomScrollView(
+      child: Consumer<MarkerNotifier>(
+        builder: (context, marker, child) => CustomScrollView(
           controller: scrollController,
           scrollBehavior: const ScrollBehavior().copyWith(dragDevices: {
             PointerDeviceKind.touch,
@@ -82,8 +72,8 @@ class SheetBody extends StatelessWidget {
                 ),
               ),
             ),
-            SliverAppBar(
-              title: Text(sheet.title),
+            const SliverAppBar(
+              title: Text("Nearby Places"),
               primary: false,
               pinned: true,
               centerTitle: false,

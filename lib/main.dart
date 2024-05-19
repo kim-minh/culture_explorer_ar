@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: ((context) => SheetNotifier())),
     ChangeNotifierProvider(create: (context) => MarkerNotifier()),
     ChangeNotifierProvider(create: (context) => MapNotifier()),
   ], child: const MyApp()));

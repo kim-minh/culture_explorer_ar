@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:culture_explorer_ar/overpass/overpass.dart';
 import 'package:culture_explorer_ar/widgets/custom_marker.dart';
-import 'package:culture_explorer_ar/widgets/custom_sheet.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -58,8 +57,8 @@ class _CustomMapsState extends State<CustomMaps> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer3<SheetNotifier, MarkerNotifier, MapNotifier>(
-      builder: (context, sheet, marker, map, child) => FlutterMap(
+    return Consumer2<MarkerNotifier, MapNotifier>(
+      builder: (context, marker, map, child) => FlutterMap(
         options: MapOptions(
           initialCenter: const LatLng(0, 0),
           initialZoom: 15,
@@ -68,8 +67,6 @@ class _CustomMapsState extends State<CustomMaps> {
           // Stop aligning the location marker to the center of the map widget
           // if user interacted with the map.
           onPositionChanged: (MapPosition position, bool hasGesture) {
-            sheet.update("Nearby Places");
-
             getPlaces(position.bounds, marker);
             if (hasGesture &&
                 map.alignPositionOnUpdate != AlignOnUpdate.never) {
