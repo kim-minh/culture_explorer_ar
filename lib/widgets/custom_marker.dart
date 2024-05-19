@@ -13,23 +13,33 @@ class MarkerNotifier with ChangeNotifier {
   CustomIconButtonState? _selectedMarker;
   CustomIconButtonState? get selectedMarker => _selectedMarker;
 
-  void resetSelected(CustomIconButtonState state) {
-    state.setSelected();
+  int _selectedMarkerIndex = -1;
+  int get selectedMarkerIndex => _selectedMarkerIndex;
+
+  void resetSelected(CustomIconButtonState marker) {
+    marker.setSelected();
+    _selectedMarkerIndex = -1;
     notifyListeners();
   }
 
-  void setSelectedMarker(CustomIconButtonState marker) {
+  void setSelectedMarker(CustomIconButtonState marker, int index) {
     _selectedMarker = marker;
+    _selectedMarkerIndex = index;
     notifyListeners();
   }
 
   void createMarkers(List<Place> places) {
     _markerList = places
-        .map((place) => CustomMarker(
+        .asMap()
+        .map((key, place) => MapEntry(
+            key,
+            CustomMarker(
               point: place.position,
+              index: key,
               name: place.tags.name ?? place.tags.nameEn ?? "Not Provided",
               type: place.tags.tourism,
-            ))
+            )))
+        .values
         .toList();
     notifyListeners();
   }
@@ -47,9 +57,10 @@ class MarkerNotifier with ChangeNotifier {
 
 @immutable
 class CustomMarker extends Marker {
+  final int index;
   final String name;
   final String type;
 
-  CustomMarker({required super.point, required this.name, required this.type})
-      : super(rotate: true, child: CustomIconButton(name: name, type: type));
+  CustomMarker({required super.point, required this.index, required this.name, required this.type})
+      : super(rotate: true, child: CustomIconButton(index: index, name: name, type: type));
 }

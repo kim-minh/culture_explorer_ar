@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomIconButton extends StatefulWidget {
+  final int _index;
   final String _name;
   final String type;
   final Icon _icon;
   final Icon _selectedIcon;
 
   const CustomIconButton(
-      {super.key, required this.type, required String name})
-      : _icon = type == 'museum'
+      {super.key, required int index, required this.type, required String name})
+      : _index = index,
+        _icon = type == 'museum'
             ? const Icon(Icons.museum_outlined)
             : const Icon(Icons.palette_outlined),
         _selectedIcon = type == 'museum'
@@ -42,7 +44,7 @@ class CustomIconButtonState extends State<CustomIconButton> {
             setSelected();
             sheet.update(widget._name);
             marker.setSelection();
-            marker.setSelectedMarker(this);
+            marker.setSelectedMarker(this, widget._index);
           } else if (_isSelected) {
             setSelected();
             sheet.update("Nearby Places");
@@ -51,7 +53,7 @@ class CustomIconButtonState extends State<CustomIconButton> {
             setSelected();
             sheet.update(widget._name);
             marker.resetSelected(marker.selectedMarker!);
-            marker.setSelectedMarker(this);
+            marker.setSelectedMarker(this, widget._index);
           }
         },
         icon: widget._icon,

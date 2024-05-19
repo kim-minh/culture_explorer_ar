@@ -90,8 +90,11 @@ class SheetBody extends StatelessWidget {
             ),
             SliverGrid.builder(
                 gridDelegate: CustomGridDelegate(),
-                itemCount: marker.markerList.length,
+                itemCount: marker.isSelected ? 1 : marker.markerList.length,
                 itemBuilder: (BuildContext context, int index) {
+                  if (marker.isSelected) {
+                    index = marker.selectedMarkerIndex;
+                  }
                   return GridTile(
                     header: GridTileBar(
                       title: Text(marker.markerList[index].name,
