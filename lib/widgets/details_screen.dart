@@ -33,7 +33,7 @@ class DetailsScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PanoramaView(
-                              url: 'assets/panaroma_images/panorama_image.png'),
+                              url: 'assets/panorama_images/panorama_image.png'),
                         ),
                       );
                     },
