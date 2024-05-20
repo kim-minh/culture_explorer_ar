@@ -5,6 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'custom_card.dart';
 
+class SheetNotifier with ChangeNotifier {
+  String _title = "Nearby Places";
+  String get title => _title;
+
+  void update(String title) {
+    _title = title;
+    notifyListeners();
+  }
+}
+
 class CustomSheet extends StatefulWidget {
   const CustomSheet({super.key});
 
@@ -25,7 +35,6 @@ class _CustomSheetState extends State<CustomSheet> {
       initialChildSize: _initialChildSize,
       maxChildSize: _maxChildSize,
       minChildSize: _minChildSize,
-      expand: false,
       snap: true,
       snapSizes: _snapSizes,
       controller: _controller,
@@ -51,8 +60,8 @@ class SheetBody extends StatelessWidget {
           topRight: Radius.circular(25),
         ),
       ),
-      child: Consumer<MarkerNotifier>(
-        builder: (context, marker, child) => CustomScrollView(
+      child: Consumer2<SheetNotifier, MarkerNotifier>(
+        builder: (context, sheet, marker, child) => CustomScrollView(
           controller: scrollController,
           scrollBehavior: const ScrollBehavior().copyWith(dragDevices: {
             PointerDeviceKind.touch,
@@ -72,19 +81,16 @@ class SheetBody extends StatelessWidget {
                 ),
               ),
             ),
-            const SliverAppBar(
-              title: Text("Nearby Places"),
+            SliverAppBar(
+              title: Text(sheet.title),
               primary: false,
               pinned: true,
               centerTitle: false,
             ),
             SliverGrid.builder(
                 gridDelegate: CustomGridDelegate(),
-                itemCount: marker.isSelected ? 1 : marker.markerList.length,
+                itemCount: marker.markerList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  if (marker.isSelected) {
-                    index = marker.selectedMarkerIndex;
-                  }
                   return GridTile(
                     header: GridTileBar(
                       title: Text(marker.markerList[index].name,

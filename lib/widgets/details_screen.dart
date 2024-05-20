@@ -1,3 +1,5 @@
+import 'package:culture_explorer_ar/vr/ar_view.dart';
+import 'package:culture_explorer_ar/vr/panorama_view.dart';
 import 'package:culture_explorer_ar/widgets/custom_grid.dart';
 import 'package:culture_explorer_ar/widgets/custom_marker.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,14 @@ class DetailsScreen extends StatelessWidget {
                     icon: const Icon(Icons.directions),
                     label: const Text("Direction")),
                 ElevatedButton.icon(
-                    onPressed: () => {}, //TODO: Navigate to 360 photo
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PanoramaView(url: '../../assets/panorama_image.png'),
+                        ),
+                      )
+                    }, //TODO: Navigate to 360 photo
                     icon: const Icon(Icons.panorama_photosphere),
                     label: const Text("360 Photos")),
               ],
@@ -39,7 +48,14 @@ class DetailsScreen extends StatelessWidget {
                     return Card(
                       clipBehavior: Clip.hardEdge,
                       child: InkWell(
-                        onTap: () => {}, //TODO: Navigate to AR model
+                        onTap: () => {
+                          Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ARView(),
+                        ),
+                          )
+                        }, //TODO: Navigate to AR model
                         child: Column(
                           children: [
                             //TODO: Get model's name from list,

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:culture_explorer_ar/overpass/overpass.dart';
 import 'package:culture_explorer_ar/widgets/custom_marker.dart';
+import 'package:culture_explorer_ar/widgets/custom_sheet.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -10,22 +11,6 @@ import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 
-class MapNotifier with ChangeNotifier {
-  AlignOnUpdate _alignPositionOnUpdate = AlignOnUpdate.always;
-  AlignOnUpdate get alignPositionOnUpdate => _alignPositionOnUpdate;
-
-  final StreamController<double?> alignPositionStreamController =
-      StreamController<double?>();
-
-  void setAlignOnUpdate(AlignOnUpdate alignOnUpdate) {
-    _alignPositionOnUpdate = alignOnUpdate;
-  }
-
-  void changeZoom(double zoom) {
-    alignPositionStreamController.add(zoom);
-  }
-}
-
 class CustomMaps extends StatefulWidget {
   const CustomMaps({super.key});
 
@@ -34,12 +19,22 @@ class CustomMaps extends StatefulWidget {
 }
 
 class _CustomMapsState extends State<CustomMaps> {
+  late AlignOnUpdate _alignPositionOnUpdate;
+  late final StreamController<double?> _alignPositionStreamController;
+
   Timer? _timer;
   final _cacheStore = MemCacheStore();
 
   @override
+  void initState() {
+    super.initState();
+    _alignPositionOnUpdate = AlignOnUpdate.always;
+    _alignPositionStreamController = StreamController<double?>();
+  }
+
+  @override
   void dispose() {
-    context.watch<MapNotifier>().alignPositionStreamController.close();
+    _alignPositionStreamController.close();
     super.dispose();
   }
 
@@ -57,8 +52,8 @@ class _CustomMapsState extends State<CustomMaps> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<MarkerNotifier, MapNotifier>(
-      builder: (context, marker, map, child) => FlutterMap(
+    return Consumer2<SheetNotifier, MarkerNotifier>(
+      builder: (context, sheet, marker, child) => FlutterMap(
         options: MapOptions(
           initialCenter: const LatLng(0, 0),
           initialZoom: 15,
@@ -67,10 +62,11 @@ class _CustomMapsState extends State<CustomMaps> {
           // Stop aligning the location marker to the center of the map widget
           // if user interacted with the map.
           onPositionChanged: (MapPosition position, bool hasGesture) {
+            sheet.update("Nearby Places");
+
             getPlaces(position.bounds, marker);
-            if (hasGesture &&
-                map.alignPositionOnUpdate != AlignOnUpdate.never) {
-              setState(() => map.setAlignOnUpdate(AlignOnUpdate.never));
+            if (hasGesture && _alignPositionOnUpdate != AlignOnUpdate.never) {
+              setState(() => _alignPositionOnUpdate = AlignOnUpdate.never);
             }
           },
         ),
@@ -85,8 +81,31 @@ class _CustomMapsState extends State<CustomMaps> {
             ),
           ),
           CurrentLocationLayer(
-            alignPositionStream: map.alignPositionStreamController.stream,
-            alignPositionOnUpdate: map.alignPositionOnUpdate,
+            alignPositionStream: _alignPositionStreamController.stream,
+            alignPositionOnUpdate: _alignPositionOnUpdate,
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    // Align the location marker to the center of the map widget
+                    // on location update until user interact with the map.
+                    setState(
+                        () => _alignPositionOnUpdate = AlignOnUpdate.always);
+                    // Align the location marker to the center of the map widget
+                    // and zoom the map to level 18.
+                    _alignPositionStreamController.add(15);
+                  },
+                  child: const Icon(
+                    Icons.my_location,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ),
           MarkerClusterLayerWidget(
             options: MarkerClusterLayerOptions(
