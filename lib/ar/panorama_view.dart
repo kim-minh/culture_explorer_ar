@@ -5,10 +5,10 @@ import 'package:panorama_viewer/panorama_viewer.dart';
 class PanoramaView extends StatefulWidget {
   final String? url;
 
-  PanoramaView({Key? key, this.url}) : super(key: key);
+  const PanoramaView({super.key, this.url});
 
   @override
-  _PanoramaViewState createState() => _PanoramaViewState();
+  State<PanoramaView> createState() => _PanoramaViewState();
 }
 
 class _PanoramaViewState extends State<PanoramaView> {
@@ -34,7 +34,7 @@ class _PanoramaViewState extends State<PanoramaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Panorama View'),
+        title: const Text('Panorama View'),
       ),
       body: Stack(
         children: [
