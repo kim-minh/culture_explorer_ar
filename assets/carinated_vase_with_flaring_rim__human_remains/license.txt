@@ -1,0 +1,11 @@
+Model Information:
+* title:	Carinated vase with flaring rim & human remains
+* source:	https://sketchfab.com/3d-models/carinated-vase-with-flaring-rim-human-remains-49b05d94f8a24ea2bbbad0b2894c6879
+* author:	The Royal Museums of Art and History (https://sketchfab.com/kmkg-mrah)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Carinated vase with flaring rim & human remains" (https://sketchfab.com/3d-models/carinated-vase-with-flaring-rim-human-remains-49b05d94f8a24ea2bbbad0b2894c6879) by The Royal Museums of Art and History (https://sketchfab.com/kmkg-mrah) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

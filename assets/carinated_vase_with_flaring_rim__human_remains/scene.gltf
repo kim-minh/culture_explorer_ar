@@ -1,0 +1,266 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.8229759931564331,
+        -4.048851013183594,
+        0.5257539749145508
+      ],
+      "min": [
+        -0.3920849859714508,
+        -5.26319694519043,
+        -0.2528359889984131
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 786384,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9999977350234985,
+        0.9999769926071167,
+        0.9998990893363953
+      ],
+      "min": [
+        -0.9999667406082153,
+        -0.9998953938484192,
+        -0.9999082088470459
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9885540008544922,
+        0.9968349933624268
+      ],
+      "min": [
+        0.009757000021636486,
+        0.0029639999847859144
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 351729,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1572768,
+      "componentType": 5126,
+      "count": 44160,
+      "max": [
+        0.437065988779068,
+        -4.049292087554932,
+        0.529384970664978
+      ],
+      "min": [
+        -0.4106369912624359,
+        -5.263485908508301,
+        -0.2532710134983063
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2102688,
+      "componentType": 5126,
+      "count": 44160,
+      "max": [
+        0.9999966025352478,
+        0.9999421834945679,
+        0.9999222159385681
+      ],
+      "min": [
+        -0.9999966025352478,
+        -0.9999738931655884,
+        -0.9999984502792358
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 524256,
+      "componentType": 5126,
+      "count": 44160,
+      "max": [
+        0.9893320202827454,
+        0.9970880150794983
+      ],
+      "min": [
+        0.004195000045001507,
+        0.0035149999894201756
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1406916,
+      "componentType": 5125,
+      "count": 217791,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "The Royal Museums of Art and History (https://sketchfab.com/kmkg-mrah)",
+      "license": "CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)",
+      "source": "https://sketchfab.com/3d-models/carinated-vase-with-flaring-rim-human-remains-49b05d94f8a24ea2bbbad0b2894c6879",
+      "title": "Carinated vase with flaring rim & human remains"
+    },
+    "generator": "Sketchfab-12.63.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2278080,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 877536,
+      "byteOffset": 2278080,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2632608,
+      "byteOffset": 3155616,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 5788224,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/3D_Model_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "3D_Model",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.16666396955641005,
+        -0.0007642920667218777,
+        -0.0005617057683951385,
+        0.0,
+        -0.0006738170250897707,
+        -0.02593892144974826,
+        -0.1646344412754308,
+        0.0,
+        0.0006675524836049218,
+        0.16463404391112046,
+        -0.02594159124120839,
+        0.0,
+        -0.019374068826436996,
+        -0.7220272421836853,
+        0.07895791530609114,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        3
+      ],
+      "name": "3D Model.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_3"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}

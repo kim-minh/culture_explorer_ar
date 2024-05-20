@@ -1,0 +1,11 @@
+Model Information:
+* title:	Catawba Earthenware Pan (2499p1404/1)
+* source:	https://sketchfab.com/3d-models/catawba-earthenware-pan-2499p14041-f9c267feeaf34309941db34ae90e054a
+* author:	RLA Archaeology (https://sketchfab.com/rla-archaeology)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Catawba Earthenware Pan (2499p1404/1)" (https://sketchfab.com/3d-models/catawba-earthenware-pan-2499p14041-f9c267feeaf34309941db34ae90e054a) by RLA Archaeology (https://sketchfab.com/rla-archaeology) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

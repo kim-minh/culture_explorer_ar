@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chinese Coin: North Song Dynasty (1101-1125 AD)
+* source:	https://sketchfab.com/3d-models/chinese-coin-north-song-dynasty-1101-1125-ad-09765d9d5a324a9f9584cc3a385d1ff9
+* author:	Pichael Productions (https://sketchfab.com/Pichael3000)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chinese Coin: North Song Dynasty (1101-1125 AD)" (https://sketchfab.com/3d-models/chinese-coin-north-song-dynasty-1101-1125-ad-09765d9d5a324a9f9584cc3a385d1ff9) by Pichael Productions (https://sketchfab.com/Pichael3000) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
