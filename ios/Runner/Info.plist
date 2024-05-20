@@ -46,6 +46,8 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to your location.</string>
+	<string>This app needs access to your location to get nearby places.</string>
+	<key>NSCameraUsageDescription</key>
+    <string>This app needs acess to your camera to show 3D models from the museums or art galleries.</string>
 </dict>
 </plist>

@@ -1,4 +1,7 @@
 PODS:
+  - arkit_plugin (0.0.1):
+    - Flutter
+    - GLTFSceneKit
   - dchs_motion_sensors (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -6,17 +9,25 @@ PODS:
     - Flutter
   - geolocator_apple (1.2.0):
     - Flutter
+  - GLTFSceneKit (0.3.0)
   - url_launcher_ios (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - arkit_plugin (from `.symlinks/plugins/arkit_plugin/ios`)
   - dchs_motion_sensors (from `.symlinks/plugins/dchs_motion_sensors/ios`)
   - Flutter (from `Flutter`)
   - flutter_compass (from `.symlinks/plugins/flutter_compass/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
+SPEC REPOS:
+  trunk:
+    - GLTFSceneKit
+
 EXTERNAL SOURCES:
+  arkit_plugin:
+    :path: ".symlinks/plugins/arkit_plugin/ios"
   dchs_motion_sensors:
     :path: ".symlinks/plugins/dchs_motion_sensors/ios"
   Flutter:
@@ -29,10 +40,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
+  arkit_plugin: bb56e71ef215147316ecf3774d5cb74beda20a10
   dchs_motion_sensors: 9cef816635a39345cda9f0c4943e061f6429f453
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_compass: cbbd285cea1584c7ac9c4e0c3e1f17cbea55e855
   geolocator_apple: 6cbaf322953988e009e5ecb481f07efece75c450
+  GLTFSceneKit: d1b437c514ba2aed5555afb0fddd64e030612d57
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
 
 PODFILE CHECKSUM: e5493faad3fc3f6c4525cb64f2dced6c8b8742ad
