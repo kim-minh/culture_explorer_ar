@@ -1,13 +1,19 @@
+import 'dart:io';
+
 import 'package:culture_explorer_ar/ar/ar_view.dart';
 import 'package:culture_explorer_ar/ar/panorama_view.dart';
 import 'package:culture_explorer_ar/widgets/custom_grid.dart';
 import 'package:culture_explorer_ar/widgets/custom_marker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsScreen extends StatelessWidget {
   final CustomMarker marker;
-  static const Map<String, String> models = {"Bình gốm": "binh_gom.glb", "Coin": "coin.glb"};
+  static const Map<String, String> models = {
+    "Bình gốm": "binh_gom.glb",
+    "Coin": "coin.glb"
+  };
 
   const DetailsScreen({super.key, required this.marker});
 
@@ -50,10 +56,27 @@ class DetailsScreen extends StatelessWidget {
                       clipBehavior: Clip.hardEdge,
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ARView(model: models.values.elementAt(index))));
+                          if (kIsWeb ||
+                              !Platform.isAndroid && !Platform.isIOS) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        "AR is only supported on mobile")));
+                          } else {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return ARView(
+                                      model: models.values.elementAt(index));
+                                } else {
+                                  return const Placeholder(
+                                    child:
+                                        Text("AR will be implemented later."),
+                                  );
+                                }
+                              },
+                            ));
+                          }
                         },
                         child: Column(
                           children: [
