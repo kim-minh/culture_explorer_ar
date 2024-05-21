@@ -3,6 +3,11 @@ allprojects {
         google()
         mavenCentral()
     }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             project.android {
